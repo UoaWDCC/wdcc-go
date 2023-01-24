@@ -1,0 +1,13 @@
+{
+  "name": "wdcc-go",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/wdcc-go-client"
+    ]
+  },
+  "dependencies": {
+    "prettier": "^2.8.3"
+  }
+}
