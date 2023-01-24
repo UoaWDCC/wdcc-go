@@ -1,14 +1,17 @@
-import { Server } from "./server.js";
+import { App } from "./app.js";
 import dotenv from "dotenv";
+import config from '../package.json' assert { type: "json" };
 
 dotenv.config();
 
 const port = process.env.PORT || 9000;
 
-const server = new Server({
+const app = new App({
   port: port,
-  name: "wdcc-go-service",
-  version: "0.1.0"
+  name: config.name,
+  version: config.version,
 })
 
-server.start();
+await app.buildServices();
+await app.buildRepos();
+await app.startHttpServer();

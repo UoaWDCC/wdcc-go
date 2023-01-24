@@ -1,22 +1,18 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getLinks } from "../adapters/GetLinksAdapter";
+import { LoadingIcon } from "../components/LoadingIcon";
 import { LinkButton } from "../components/tree/LinkButton";
 import logo from "../resources/logo_white_512.png";
 
 export function IndexPage() {
-  const items = [
-    {
-      label: "Website",
-      link: "https://wdcc.co.nz",
-      hoverHint: "Click me to go to WDCC's home page",
-      bgColour: "#FFD166",
-    },
-    {
-      label: "Instagram",
-      link: "https://instagram.com/uoa_wdcc",
-      hoverHint: "Click me to go to WDCC's home page",
-      bgColour: "lightpink",
-    },
-  ];
+  
+  const [links, setLinks] = useState(null);
+
+  useEffect(() => {
+    getLinks().then(data => setLinks(data));
+  }, []);
 
   return (
     <div className="bg-wdcc-blue h-screen py-24 px-4">
@@ -29,7 +25,7 @@ export function IndexPage() {
         </div>
 
         <div className="text-center flex flex-col max-w-md mx-auto my-4 font-body">
-          {items.map((it, idx) => (
+          {links?.map((it, idx) => (
             <LinkButton
               key={idx}
               label={it.label}
@@ -37,7 +33,7 @@ export function IndexPage() {
               hoverHint={it.hoverHint}
               bgColour={it.bgColour}
             />
-          ))}
+          )) ?? <LoadingIcon />}
         </div>
       </div>
     </div>
