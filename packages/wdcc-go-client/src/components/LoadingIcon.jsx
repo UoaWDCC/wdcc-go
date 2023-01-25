@@ -1,7 +1,9 @@
+import ReactLoading from 'react-loading';
+
 function LoadingIcon() {
-  return <p className="text-wdcc-white font-bold">
-    Loading...
-  </p>
+  return (<p>
+    <ReactLoading className='m-auto' type={"bars"} color='white' height={40} width={40} />
+  </p>)
 }
 
 export {

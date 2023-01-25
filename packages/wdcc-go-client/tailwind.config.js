@@ -8,7 +8,10 @@ module.exports = {
     },
     colors: {
       wdcc: {
-        blue: "#087DF1",
+        blue: {
+          100: "#087DF1",
+          200: "#085DD1"
+        },
         dark_blue: "#03045E",
         purple: "#7209B7",
         yellow: "#FFD166",

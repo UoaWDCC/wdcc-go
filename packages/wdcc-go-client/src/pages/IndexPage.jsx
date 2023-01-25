@@ -15,16 +15,15 @@ export function IndexPage() {
   }, []);
 
   return (
-    <div className="bg-wdcc-blue h-screen py-24 px-4">
-      <div>
+    <div className="min-h-screen py-24 px-4 flex justify-center items-center bg-gradient-to-b from-wdcc-blue-100 to-wdcc-blue-200">
+      <div className="flex-grow">
         <div className="flex flex-row m-auto justify-center items-center">
-          <img className="w-28 text-center flex-shrink" src={logo} />
-          <h1 className="text-center pl-4 font-bold text-3xl text-wdcc-white font-display flex-shrink">
-            Go Links
-          </h1>
+          <img className="w-36 text-center flex-shrink" src={logo} />
+
         </div>
 
-        <div className="text-center flex flex-col max-w-md mx-auto my-4 font-body">
+        <div className="text-center flex flex-col max-w-md mx-auto my-4 font-display pb-28">
+          <hr className="border-wdcc-white border-1 my-4" />
           {links?.map((it, idx) => (
             <LinkButton
               key={idx}
@@ -32,6 +31,7 @@ export function IndexPage() {
               link={it.link}
               hoverHint={it.hoverHint}
               bgColour={it.bgColour}
+              iconUrl={it.iconUrl}
             />
           )) ?? <LoadingIcon />}
         </div>

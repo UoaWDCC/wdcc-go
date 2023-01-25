@@ -17,6 +17,7 @@ class LinksRepository {
       link: it.link,
       hoverHint: it.hover_hint,
       bgColour: it.bg_colour,
+      iconUrl: it.icon_url
     }));
   }
 }
