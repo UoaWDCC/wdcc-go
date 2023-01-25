@@ -1,7 +1,6 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 
 class GSheetsService {
-
   constructor(sheetId, credentials) {
     this.client = new GoogleSpreadsheet(sheetId);
     this.credentials = credentials;
@@ -14,13 +13,12 @@ class GSheetsService {
   }
 
   async getLinksRows() {
-    const linksSheet = this.client.sheetsById[0];
-    const rows = await linksSheet.getRows();
-    return rows;
+    return await this.client.sheetsById[0].getRows();
+  }
+
+  async getRedirectsRows() {
+    return await this.client.sheetsById[841084673].getRows();
   }
 }
 
-
-export {
-  GSheetsService
-}
+export { GSheetsService };

@@ -21,15 +21,20 @@ export function LinkButton({ label, hoverHint, bgColour, link, iconUrl }) {
     } catch (e) {
       return false;
     }
-  }
+  };
 
   const getIcon = (url) => {
     if (isStrUrl(url)) {
-      return <img src={iconUrl} className="block h-6 absolute left-3 aspect-square object-contain" />;
+      return (
+        <img
+          src={iconUrl}
+          className="block h-6 absolute left-3 aspect-square object-contain"
+        />
+      );
     } else if (!!url) {
       return <p className="absolute left-3">{url}</p>;
     }
-  }
+  };
 
   return (
     <a

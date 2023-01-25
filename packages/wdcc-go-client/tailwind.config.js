@@ -10,7 +10,7 @@ module.exports = {
       wdcc: {
         blue: {
           100: "#087DF1",
-          200: "#085DD1"
+          200: "#085DD1",
         },
         dark_blue: "#03045E",
         purple: "#7209B7",

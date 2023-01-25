@@ -1,6 +1,6 @@
 import { GSheetsService } from "../services/gsheets.service.js";
 
-class LinksRepository {
+class GoRepository {
   /**
    *
    * @param {GSheetsService} gSheetsService
@@ -17,9 +17,20 @@ class LinksRepository {
       link: it.link,
       hoverHint: it.hover_hint,
       bgColour: it.bg_colour,
-      iconUrl: it.icon_url
+      iconUrl: it.icon_url,
     }));
+  }
+
+  async getRedirects() {
+    const rows = await this.gsheetsService.getRedirectsRows();
+
+    const redirects = {};
+    for (let row of rows) {
+      redirects[row.key] = row.link;
+    }
+
+    return redirects;
   }
 }
 
-export { LinksRepository };
+export { GoRepository };

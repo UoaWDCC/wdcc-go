@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { GSheetsService } from "./services/gsheets.service.js";
 import dotenv from "dotenv";
-import { LinksRepository } from "./repos/links.repo.js";
+import { GoRepository } from "./repos/links.repo.js";
 
 import gsheetsCredentials from "../private_keys/wdcc-website-prod-4c18b3b7b6f6.json" assert { type: "json" };
 
@@ -32,17 +32,26 @@ class App {
     this.app.get("/", (req, res, next) => {
       res.json({
         name: this.name,
-        version: this.version
+        version: this.version,
       });
     });
 
     this.app.use(
-      "/api/links",
+      "/api/go",
       async (req, res, next) => {
         console.log("Starting request");
-        const result = await this.repos[LinksRepository.name].getLinks();
-        res.setHeader('Cache-Control', 'max-age=3600');
-        res.json(result);
+        const results = await Promise.all([
+          this.repos[GoRepository.name].getLinks(),
+          this.repos[GoRepository.name].getRedirects(),
+        ]);
+
+        const resp = {
+          links: results[0],
+          redirects: results[1],
+        };
+
+        res.setHeader("Cache-Control", "max-age=3600");
+        res.json(resp);
         next();
       },
       (req, res, next) => {
@@ -72,11 +81,10 @@ class App {
   async buildRepos() {
     this.log(`Building repos`);
 
-    const linksRepo = new LinksRepository(this.services[GSheetsService.name]);
-    this.repos[linksRepo.constructor.name] = linksRepo;
+    this.repos[GoRepository.name] = new GoRepository(
+      this.services[GSheetsService.name]
+    );
   }
 }
 
-export {
-  App
-}
+export { App };

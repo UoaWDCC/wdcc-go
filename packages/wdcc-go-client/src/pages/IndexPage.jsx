@@ -1,17 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getLinks } from "../adapters/GetLinksAdapter";
 import { LoadingIcon } from "../components/LoadingIcon";
 import { LinkButton } from "../components/tree/LinkButton";
 import logo from "../resources/logo_white_512.png";
+import { ClientDatastore } from "../adapters/ClientDatastore";
 
 export function IndexPage() {
-  
   const [links, setLinks] = useState(null);
 
   useEffect(() => {
-    getLinks().then(data => setLinks(data));
+    ClientDatastore.getInstance()
+      .getLinks()
+      .then((data) => setLinks(data));
   }, []);
 
   return (
@@ -19,7 +20,6 @@ export function IndexPage() {
       <div className="flex-grow">
         <div className="flex flex-row m-auto justify-center items-center">
           <img className="w-36 text-center flex-shrink" src={logo} />
-
         </div>
 
         <div className="text-center flex flex-col max-w-md mx-auto my-4 font-display pb-28">
