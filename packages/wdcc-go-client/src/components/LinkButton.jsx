@@ -1,5 +1,5 @@
 import React from "react";
-import { getContrastColour } from "../../styles/colours.util";
+import { getContrastColour } from "../styles/colours.util";
 import imageThing from "../../resources/logo_white_512.png";
 
 /**

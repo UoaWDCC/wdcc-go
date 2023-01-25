@@ -4,7 +4,7 @@ import "./styles/index.css";
 import { IndexPage } from "./pages/IndexPage";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { LoadingIcon } from "./components/LoadingIcon";
-import { ClientDatastore } from "./adapters/ClientDatastore";
+import { ClientDatastore } from "./adapters/client.datastore";
 
 const Redirect = () => {
   const location = useLocation();

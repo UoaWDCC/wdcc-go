@@ -11,6 +11,7 @@
     "google-spreadsheet": "^3.3.0"
   },
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "test": "echo 'No tests found in wdcc-go-service'"
   }
 }

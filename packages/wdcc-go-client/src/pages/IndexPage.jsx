@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { LoadingIcon } from "../components/LoadingIcon";
-import { LinkButton } from "../components/tree/LinkButton";
+import { LinkButton } from "../components/LinkButton";
 import logo from "../resources/logo_white_512.png";
-import { ClientDatastore } from "../adapters/ClientDatastore";
+import { ClientDatastore } from "../adapters/client.datastore";
 
 export function IndexPage() {
   const [links, setLinks] = useState(null);

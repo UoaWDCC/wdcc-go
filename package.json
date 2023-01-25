@@ -4,10 +4,14 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/wdcc-go-client"
+      "packages/*"
     ]
   },
   "dependencies": {
     "prettier": "^2.8.3"
+  },
+  "scripts": {
+    "start-service": "yarn workspace wdcc-go-service run start",
+    "test": "CI=true yarn workspaces run test"
   }
 }
