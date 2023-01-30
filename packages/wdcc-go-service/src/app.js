@@ -50,7 +50,7 @@ class App {
           redirects: results[1],
         };
 
-        res.setHeader("Cache-Control", "max-age=3600");
+        res.setHeader("Cache-Control", "max-age=300");
         res.json(resp);
         next();
       },
