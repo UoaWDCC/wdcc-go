@@ -1,5 +1,4 @@
 # WDCC GO
-[![Deploy PROD](https://github.com/UoaWDCC/wdcc-go/actions/workflows/deploy-prod.yml/badge.svg?branch=main)](https://github.com/UoaWDCC/wdcc-go/actions/workflows/deploy-prod.yml)
 
 This is the repository for how WDCC hosts our go page (https://go.wdcc.co.nz) and the shortened links. 
 
