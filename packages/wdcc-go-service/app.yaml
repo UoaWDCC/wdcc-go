@@ -1,4 +1,6 @@
 runtime: nodejs14
 
+entrypoint: "PORT=8080 yarn start"
+
 includes:
   - gae_env.yaml
