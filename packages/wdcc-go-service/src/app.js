@@ -50,7 +50,8 @@ class App {
           redirects: results[1],
         };
 
-        res.setHeader("Cache-Control", "max-age=300");
+        // Don't re-request data if data is less than 10 seconds old
+        res.setHeader("Cache-Control", "max-age=10");
         res.json(resp);
         next();
       },
@@ -82,7 +83,8 @@ class App {
     this.log(`Building repos`);
 
     this.repos[GoRepository.name] = new GoRepository(
-      this.services[GSheetsService.name]
+      this.services[GSheetsService.name],
+      60
     );
   }
 }
