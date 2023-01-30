@@ -47,11 +47,11 @@ class GoRepository {
   #getFromCacheOrNull(key) {
     const cacheEntry = this.cache[key];
     // If no cache entry exists for key, or cached data is too old
-    if (!!cacheEntry || cacheEntry.createdAt + this.cacheTimeoutSecs * 1_000 < Date.now()) {
-      return null;
-    } 
+    if (!!cacheEntry && cacheEntry.createdAt + this.cacheTimeoutSecs * 1_000 > Date.now()) {
+      return this.cache[key].data;
+    }
 
-    return this.cache[key].data;
+    return null;
   }
 
   #saveToCache(key, data) {
