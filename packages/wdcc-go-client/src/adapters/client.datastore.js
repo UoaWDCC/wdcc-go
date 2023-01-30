@@ -14,7 +14,7 @@ class ClientDatastore {
   }
 
   async init() {
-    const resp = await fetch("/go", { method: "GET" });
+    const resp = await fetch(`${REACT_APP_API_HOST}/go`, { method: "GET" });
 
     if (resp.ok) {
       const data = await resp.json();
