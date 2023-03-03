@@ -20,8 +20,6 @@ class ClientDatastore {
       const data = await resp.json();
       this.links = data.links;
       this.redirects = data.redirects;
-
-      console.log("data", data);
     } else {
       this.links = [];
       this.redirects = {};
